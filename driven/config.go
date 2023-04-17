@@ -14,6 +14,7 @@ type Config struct {
 	WebhookURL       string        `env:"WEBHOOK_URL,required"`
 	PeriodOfChecking int           `env:"PERIOD" envDefault:"3600"`
 	Retryer          RetryerConfug `envPrefix:"RETRYER"`
+	HttpPort         string        `env:"PORT" envDefault:"80"`
 }
 
 func NewConfig() (*Config, error) {

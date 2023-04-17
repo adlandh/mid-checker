@@ -4,6 +4,7 @@ import (
 	"github.com/adlandh/mid-checker/app"
 	"github.com/adlandh/mid-checker/domain"
 	"github.com/adlandh/mid-checker/driven"
+	"github.com/adlandh/mid-checker/driver"
 
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -28,6 +29,6 @@ func main() {
 				fx.As(new(domain.PassportChangedEventSender)),
 			),
 		),
-		fx.Invoke(app.NewApplication),
+		fx.Invoke(app.NewApplication, driver.NewHttpServer),
 	).Run()
 }
