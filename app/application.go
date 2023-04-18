@@ -37,30 +37,34 @@ func NewApplication(lc fx.Lifecycle, passportInfoFetcher domain.PassportInfoFetc
 
 func (a *Application) CheckStatusPeriodically() {
 	for {
-		a.logger.Info("start checking passport status")
-		info, err := a.infoFetcher.GetPassportStatus()
-		if err != nil {
-			a.logger.Error("error checking passport status", zap.Error(err))
-			continue
-		}
-
-		if info == nil {
-			a.logger.Error("empty passport status returned")
-			continue
-		}
-
-		if a.savedPassportInfo.Uid != "" &&
-			(info.InternalStatus.Percent != a.savedPassportInfo.InternalStatus.Percent ||
-				info.InternalStatus.Name != a.savedPassportInfo.InternalStatus.Name) {
-			a.logger.Info("password changed, sending event")
-			err := a.evenSender.SendChangedStatus(info)
-			if err != nil {
-				a.logger.Error("error sending event", zap.Error(err))
-			}
-		}
-
-		a.savedPassportInfo = *info
-		a.logger.Info("finish checking passport status")
+		a.checkStatus()
 		time.Sleep(a.period)
 	}
+}
+
+func (a *Application) checkStatus() {
+	a.logger.Info("start checking passport status")
+	defer a.logger.Info("finish checking passport status")
+	info, err := a.infoFetcher.GetPassportStatus()
+	if err != nil {
+		a.logger.Error("error checking passport status", zap.Error(err))
+		return
+	}
+
+	if info == nil {
+		a.logger.Error("empty passport status returned")
+		return
+	}
+
+	if a.savedPassportInfo.Uid != "" &&
+		(info.InternalStatus.Percent != a.savedPassportInfo.InternalStatus.Percent ||
+			info.InternalStatus.Name != a.savedPassportInfo.InternalStatus.Name) {
+		a.logger.Info("password changed, sending event")
+		err := a.evenSender.SendChangedStatus(info)
+		if err != nil {
+			a.logger.Error("error sending event", zap.Error(err))
+		}
+	}
+
+	a.savedPassportInfo = *info
 }
