@@ -5,7 +5,7 @@ import (
 )
 
 type RetryerConfug struct {
-	Timeout             int `env:"TIMEOUT" envDefault:"10"`
+	Timeout             int `env:"TIMEOUT" envDefault:"60"`
 	TLSHandshakeTimeout int `env:"TLS_TIMEOUT" envDefault:"5"`
 }
 
