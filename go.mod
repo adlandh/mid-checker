@@ -6,7 +6,7 @@ require (
 	github.com/caarlos0/env/v7 v7.1.0
 	github.com/labstack/echo/v4 v4.11.2
 	github.com/ybbus/httpretry v1.0.2
-	go.uber.org/fx v1.20.0
+	go.uber.org/fx v1.20.1
 	go.uber.org/zap v1.26.0
 )
 
