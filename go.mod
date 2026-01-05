@@ -6,7 +6,7 @@ toolchain go1.24.1
 
 require (
 	github.com/caarlos0/env/v7 v7.1.0
-	github.com/labstack/echo/v4 v4.14.0
+	github.com/labstack/echo/v4 v4.15.0
 	github.com/ybbus/httpretry v1.0.2
 	go.uber.org/fx v1.24.0
 	go.uber.org/zap v1.27.1
