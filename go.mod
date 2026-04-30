@@ -9,7 +9,7 @@ require (
 	github.com/labstack/echo/v4 v4.15.1
 	github.com/ybbus/httpretry v1.0.2
 	go.uber.org/fx v1.24.0
-	go.uber.org/zap v1.27.1
+	go.uber.org/zap v1.28.0
 )
 
 require (
