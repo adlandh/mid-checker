@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/caarlos0/env/v7 v7.1.0
-	github.com/labstack/echo/v4 v4.15.4
+	github.com/labstack/echo/v4 v4.16.0
 	github.com/ybbus/httpretry v1.0.2
 	go.uber.org/fx v1.24.0
 	go.uber.org/zap v1.28.0
@@ -21,5 +21,5 @@ require (
 	golang.org/x/crypto v0.53.0 // indirect
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
-	golang.org/x/text v0.38.0 // indirect
+	golang.org/x/text v0.40.0 // indirect
 )
