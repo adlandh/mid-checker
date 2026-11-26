@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/caarlos0/env/v7 v7.1.0
-	github.com/labstack/echo/v4 v4.16.5
+	github.com/labstack/echo/v4 v4.16.6
 	github.com/ybbus/httpretry v1.0.2
 	go.uber.org/fx v1.24.0
 	go.uber.org/zap v1.28.0
